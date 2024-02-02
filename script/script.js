@@ -12,7 +12,6 @@ const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
 
 
-// Modal window
 
 const openModal = function (e) {
   e.preventDefault();
@@ -37,7 +36,6 @@ document.addEventListener('keydown', function (e) {
 });
 
 
-// Button scrolling
 
 btnScrollTo.addEventListener('click', function (e) {
   const s1coords = section1.getBoundingClientRect();
@@ -68,25 +66,25 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 
 
 
-// Tabbed component
+
 
 tabsContainer.addEventListener('click', function (e) {
   const clicked = e.target.closest('.operations__tab');
 
-  // Guard clause
+ 
 
   if (!clicked) return;
 
-  // Remove active classes
+  
 
   tabs.forEach(t => t.classList.remove('operations__tab--active'));
   tabsContent.forEach(c => c.classList.remove('operations__content--active'));
 
-  // Activate tab
+  
 
   clicked.classList.add('operations__tab--active');
 
-  // Activate content area
+
 
   document
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
@@ -94,7 +92,7 @@ tabsContainer.addEventListener('click', function (e) {
 });
 
 
-// Menu fade away animation
+
 
 const handleHover = function (e) {
   if (e.target.classList.contains('nav__link')) {
@@ -109,14 +107,13 @@ const handleHover = function (e) {
   }
 };
 
-// Passing "argument" into handler
 
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
 
 
 
-// Sticky navigation: Intersection Observer API
+
 
 const header = document.querySelector('.header');
 const navHeight = nav.getBoundingClientRect().height;
@@ -138,7 +135,7 @@ headerObserver.observe(header);
 
 
 
-// Reveal sections
+
 
 const allSections = document.querySelectorAll('.section');
 
@@ -162,8 +159,6 @@ allSections.forEach(function (section) {
 });
 
 
-//  Slow loading image effect
-
 const imgTargets = document.querySelectorAll('img[data-src]');
 
 const loadImg = function (entries, observer) {
@@ -171,7 +166,7 @@ const loadImg = function (entries, observer) {
 
   if (!entry.isIntersecting) return;
 
-  // Replacing src with data-src
+
 
   entry.target.src = entry.target.dataset.src;
 
@@ -192,7 +187,7 @@ imgTargets.forEach(img => imgObserver.observe(img));
 
 
 
-// Slider Function
+
 
 const slider = function () {
   const slides = document.querySelectorAll('.slide');
@@ -229,7 +224,7 @@ const slider = function () {
   };
 
 
-  // Traversing to the Next slide
+
 
   const nextSlide = function () {
     if (curSlide === maxSlide - 1) {
@@ -260,8 +255,6 @@ const slider = function () {
   };
   init();
 
-
-  // Event handlers : For notifying the changes in the webpage
 
   btnRight.addEventListener('click', nextSlide);
   btnLeft.addEventListener('click', prevSlide);
